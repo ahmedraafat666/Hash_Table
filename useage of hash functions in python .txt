@@ -1,0 +1,49 @@
+useage of hash functions in python data structures :
+
+
+Hash tables : are used to store data using a pair of keys and values. A hash function uses a mathematical algorithm to calculate the hash value. A collision occurs when the same hash value is generated for more than one value. Chaining solves collision by creating linked lists.
+
+Google is the bigest user of hash table..
+
+
+
+hashing features :
+
+1. Deterministic
+2. quick computation
+3. pre-image resistance
+4. small changes in the input changes the hash
+5. collision resistance
+
+
+example on hash () on a custom object:
+
+class Emp:
+    def __init__(self, emp_name, id):
+        self.emp_name = emp_name
+        self.id = id
+ 
+    def __eq__(self, other):
+       
+        # Equality Comparison between two objects
+        return self.emp_name == other.emp_name and self.id == other.id
+ 
+    def __hash__(self):
+       
+        # hash(custom_object)
+        return hash((self.emp_name, self.id))
+ 
+emp = Emp('Ragav', 12)
+print("The hash is: %d" % hash(emp))
+ 
+# We'll check if two objects with the same
+# attribute values have the same hash
+emp_copy = Emp('Ragav', 12)
+print("The hash is: %d" % hash(emp_copy))
+
+
+Output:
+
+The hash is: -674930604243231063
+The hash is: -674930604243231063
+
